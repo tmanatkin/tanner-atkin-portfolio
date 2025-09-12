@@ -1,9 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- Title -->
+    <title>Tanner Atkin - Full Stack Software Engineer Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/icons/favicon-16x16.png" sizes="16x16" type="image/png" />
+    <link rel="icon" href="/icons/favicon-32x32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <!-- Preload Image -->
+    <link rel="preload" href="/images/tanner-atkin-nobg.png" as="image" />
   </head>
-  <body></body>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="content-container">
+        <div class="header-title">
+          <h1>Hi, I'm <span class="bg-gradient bg-gradient-text-fill">Tanner</span>.</h1>
+          <div class="header-title-gradient-toggle">
+            <button
+              id="header-title-gradient-toggle-button-0"
+              class="header-title-gradient-toggle-button header-title-gradient-toggle-button-selected bg-gradient"
+              onclick="colorGradientAnimation(0)"
+              disabled
+            >
+              Full-Stack
+            </button>
+            <button id="header-title-gradient-toggle-button-1" class="header-title-gradient-toggle-button" onclick="colorGradientAnimation(1)">
+              Frontend
+            </button>
+            <button id="header-title-gradient-toggle-button-2" class="header-title-gradient-toggle-button" onclick="colorGradientAnimation(2)">
+              Backend
+            </button>
+          </div>
+          <div></div>
+        </div>
+        <div class="header-image">
+          <img class="bg-gradient" src="/images/tanner-atkin-nobg.png" alt="Tanner Atkin" />
+        </div>
+      </div>
+    </header>
+    <section class="bg-gradient"></section>
+
+    <!-- JS -->
+    <script type="module" src="./src/js/main.js"></script>
+  </body>
 </html>

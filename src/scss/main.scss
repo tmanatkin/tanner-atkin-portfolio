@@ -1,0 +1,60 @@
+@use "./utils" as *;
+
+// reset
+@use "reset";
+
+// layout
+@use "layout/header";
+
+* {
+  color: $color-foreground;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  @include font-urbanist();
+  background-color: $color-background;
+}
+
+header,
+section,
+footer {
+  width: 100%;
+  @include flex-center;
+
+  .content-container {
+    max-width: 1200px;
+    @include flex-center($direction: row);
+  }
+}
+
+h1 {
+  font-size: 5rem;
+  line-height: 1.125;
+  font-weight: 900;
+  margin: 0;
+}
+
+.bg-gradient {
+  background-position: $color-gradient-animation-position-end;
+  background-image: $color-gradient-full;
+  background-size: $color-gradient-size;
+  background-attachment: fixed;
+
+  &-text-fill {
+    display: inline-block;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  &-animate {
+    animation: $color-gradient-animation;
+  }
+}
+
+section {
+  min-height: 100vh;
+}

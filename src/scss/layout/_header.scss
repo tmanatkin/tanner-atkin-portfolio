@@ -1,0 +1,80 @@
+@use "../utils" as *;
+
+.header {
+  .content-container {
+    gap: 50px;
+  }
+
+  &-title {
+    @include flex-center($align: stretch);
+    gap: 10px;
+
+    h1 {
+      margin-left: 1rem;
+    }
+
+    &-gradient-toggle {
+      @include flex-center($direction: row);
+      gap: 20px;
+
+      &-button {
+        position: relative;
+        flex: 1;
+        font-size: 1.125rem;
+        font-weight: 400;
+        padding: 0.5rem 0;
+        border-radius: 9999px;
+        border: 1px solid $color-foreground;
+        background-color: $color-background;
+        outline: 1px solid transparent;
+        outline-offset: -1px;
+        cursor: pointer;
+        transition: color $transition-timing, background-color $transition-timing, font-weight $transition-timing, border $transition-timing,
+          outline $transition-timing-long, outline-offset $transition-timing-long;
+
+        &:hover {
+          font-weight: 500;
+          background-color: $color-foreground-muted;
+          border-color: transparent;
+          color: $color-background;
+        }
+
+        &-selected {
+          font-weight: 500;
+          color: $color-background;
+          border-color: transparent;
+          background-color: transparent;
+          outline: 2px solid $color-background;
+          outline-offset: -8px;
+        }
+
+        // &::after {
+        //   content: "";
+        //   width: calc(100% + 2px);
+        //   height: calc(100% + 2px);
+        //   position: absolute;
+        //   top: -1px;
+        //   left: -1px;
+        //   border-radius: inherit;
+        //   background-color: $color-foreground-muted;
+        //   transition: background-color $transition-timing;
+        // }
+
+        // &-selected::after {
+        //   background-color: transparent;
+        // }
+      }
+    }
+  }
+
+  &-image {
+    flex: 1;
+    @include flex-center;
+    padding: 90px 0;
+
+    img {
+      width: 100%;
+      border-radius: 100%;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+//
+// CSS VARIABLES
+//
+
+// CSS variables are able to be manipulated or overridden, unlike SCSS variables
+:root {
+  // defaults for gradient animation positions, will be dynamically changed with JS
+  --gradient-animation-position-start: 0% 0%;
+  --gradient-animation-position-end: 100% 100%;
+}
+
+//
+// COLORS
+//
+
+// colors
+$color-background: #fafafa;
+$color-foreground: #222;
+$color-foreground-muted: #b1b1b1;
+
+// gradient
+$color-gradient-1: #ecc80c;
+$color-gradient-range-1-2: #ecc608, #edbb00, #ed9b00, #e76000, #df340b, #dc1a13;
+$color-gradient-2: #db1414;
+$color-gradient-range-2-3: #dc081b, #de003b, #d5007a, #9e00d2, #5a1fe8, #2342e7;
+$color-gradient-3: #1046e6;
+$color-gradient-range-3-1: #0065fc, #008fe2, #00b5c6, #22cc8a, #b6cf25, #e5c902;
+$color-gradient-full: linear-gradient(
+  to bottom right,
+  $color-gradient-1,
+  $color-gradient-range-1-2,
+  $color-gradient-2,
+  $color-gradient-range-2-3,
+  $color-gradient-3,
+  $color-gradient-range-3-1,
+  $color-gradient-1,
+  $color-gradient-range-1-2,
+  $color-gradient-2
+);
+$color-gradient-size: 400% 400%;
+$color-gradient-animation-position-start: var(--gradient-animation-position-start);
+$color-gradient-animation-position-end: var(--gradient-animation-position-end);
+
+//
+// BREAKPOINTS
+//
+
+// $breakpoint-mobile: 600px;
+// $breakpoint-tablet: 900px;
+// $breakpoint-desktop: 1200px;
+// $breakpoint-large-desktop: 1800px;
+
+//
+// MIXINS
+//
+
+@mixin flex-center($direction: column, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin font-urbanist() {
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+}
+
+//
+// ANIMATIONS
+//
+
+$transition-timing: 0.15s ease-in-out;
+$transition-timing-long: 0.5s ease-out;
+
+$color-gradient-animation: moveColorGradient 1s ease-in-out;
+
+@keyframes moveColorGradient {
+  0% {
+    background-position: $color-gradient-animation-position-start;
+  }
+  100% {
+    background-position: $color-gradient-animation-position-end;
+  }
+}
