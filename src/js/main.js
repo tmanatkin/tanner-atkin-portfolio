@@ -11,15 +11,20 @@ import "/src/scss/main.scss";
 
 // initialize color gradient variables
 const gradientWindowPositions = ["0% 0%", "100% 100%"];
-let currentPositionIndex = 1;
+let currentPositionIndex = 0;
 const classBgGradient = "bg-gradient";
 const classAnimate = "bg-gradient-animate";
 const classButtonAndId = "header-title-gradient-toggle-button";
 const classSelected = "selected";
 
+export function onLoadColorGradient() {
+  const initialButton = document.getElementById(`${classButtonAndId}-${currentPositionIndex}`);
+  initialButton.classList.add(`${classButtonAndId}-${classSelected}`, classBgGradient);
+}
+
 export function colorGradientAnimation() {
   // determine new position index (flips between 0 and 1)
-  const newPositionIndex = 1 - currentPositionIndex;
+  const newPositionIndex = currentPositionIndex ? 0 : 1;
 
   // set starting position
   document.documentElement.style.setProperty("--gradient-animation-position-start", `${gradientWindowPositions[currentPositionIndex]}`);
@@ -29,7 +34,7 @@ export function colorGradientAnimation() {
 
   // get elements and buttons
   const buttons = document.querySelectorAll(`.${classButtonAndId}`);
-  const currentButton = document.getElementById(`${classButtonAndId}-${currentPositionIndex}`);
+  const newButton = document.getElementById(`${classButtonAndId}-${newPositionIndex}`);
 
   // toggle animation class for all elements to trigger animation
   buttons.forEach((button) => {
@@ -38,7 +43,7 @@ export function colorGradientAnimation() {
   });
 
   // set current button to active
-  currentButton.classList.add(`${classButtonAndId}-${classSelected}`, classBgGradient);
+  newButton.classList.add(`${classButtonAndId}-${classSelected}`, classBgGradient);
 
   // select all elements that will have background gradient animation
   const elements = document.querySelectorAll(`.${classBgGradient}`);
@@ -68,5 +73,6 @@ export function colorGradientAnimation() {
   currentPositionIndex = newPositionIndex;
 }
 
-// scope function to window for html button onclick
+// scope functions to window for html button onclick
+window.onLoadColorGradient = onLoadColorGradient;
 window.colorGradientAnimation = colorGradientAnimation;

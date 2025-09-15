@@ -5,8 +5,8 @@
 // CSS variables are able to be manipulated or overridden, unlike SCSS variables
 :root {
   // defaults for gradient animation positions, will be dynamically changed with JS
-  --gradient-animation-position-start: 0% 0%;
-  --gradient-animation-position-end: 100% 100%;
+  --gradient-animation-position-start: 100% 100%;
+  --gradient-animation-position-end: 0% 0%;
 }
 
 //
