@@ -10,33 +10,22 @@ import "/src/scss/main.scss";
 //
 
 // initialize color gradient variables
-const gradientWindowPositions = ["0% 0%", "33% 33%", "67% 67%", "100% 100%"];
-let currentPositionIndex = 0;
+const gradientWindowPositions = ["0% 0%", "100% 100%"];
+let currentPositionIndex = 1;
 const classBgGradient = "bg-gradient";
 const classAnimate = "bg-gradient-animate";
 const classButtonAndId = "header-title-gradient-toggle-button";
 const classSelected = "selected";
 
-export function colorGradientAnimation(newPositionIndex) {
-  // reset position to loop end to end
-  if (currentPositionIndex === 2 && newPositionIndex === 0) {
-    newPositionIndex = 3;
-  } else if (currentPositionIndex === 0 && newPositionIndex === 2) {
-    currentPositionIndex = 3;
-  }
+export function colorGradientAnimation() {
+  // determine new position index (flips between 0 and 1)
+  const newPositionIndex = 1 - currentPositionIndex;
 
   // set starting position
   document.documentElement.style.setProperty("--gradient-animation-position-start", `${gradientWindowPositions[currentPositionIndex]}`);
 
   // set ending (new current) position
   document.documentElement.style.setProperty("--gradient-animation-position-end", `${gradientWindowPositions[newPositionIndex]}`);
-
-  // set new current position
-  if (newPositionIndex === 3) {
-    currentPositionIndex = 0;
-  } else {
-    currentPositionIndex = newPositionIndex;
-  }
 
   // get elements and buttons
   const buttons = document.querySelectorAll(`.${classButtonAndId}`);
@@ -51,6 +40,7 @@ export function colorGradientAnimation(newPositionIndex) {
   // set current button to active
   currentButton.classList.add(`${classButtonAndId}-${classSelected}`, classBgGradient);
 
+  // select all elements that will have background gradient animation
   const elements = document.querySelectorAll(`.${classBgGradient}`);
 
   // toggle animation class for all elements to trigger animation
@@ -66,16 +56,16 @@ export function colorGradientAnimation(newPositionIndex) {
         // remove animation
         element.classList.remove(classAnimate);
 
-        // enable buttons (except for current position)
-        [0, 1, 2]
-          .filter((n) => n !== currentPositionIndex)
-          .forEach((n) => {
-            document.getElementById(`${classButtonAndId}-${n}`).disabled = false;
-          });
+        // enable buttons
+        buttons.forEach((button) => {
+          button.disabled = false;
+        });
       },
       { once: true }
     );
   });
+
+  currentPositionIndex = newPositionIndex;
 }
 
 // scope function to window for html button onclick
