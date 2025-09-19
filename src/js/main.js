@@ -77,7 +77,7 @@ import "/src/scss/main.scss";
 // }
 
 //
-// GITHUB
+// GITHUB REPO LAST UPDATED DATE
 //
 
 function onLoadGitHubLastUpdated() {
@@ -98,12 +98,24 @@ function onLoadGitHubLastUpdated() {
 }
 
 //
+// VH CALC
+// fix for mobile browsers changing vh with search bar
+// see scss functions for more context on usage
+//
+
+function onLoadSetMobileVh() {
+  const vh = window.innerHeight * 0.01; // convert from total vh to 1 vh
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
+
+//
 // ON LOAD
 //
 
 function onLoad() {
   // onLoadColorGradient();
   onLoadGitHubLastUpdated();
+  onLoadSetMobileVh();
 }
 
 // scope functions to window for html button onclick

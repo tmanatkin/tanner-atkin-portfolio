@@ -72,6 +72,13 @@ $breakpoint-desktop: 1350px;
   );
 }
 
+@function vh-mobile($percent) {
+  // --vh is from JavaScript function in main.js, calculated on load
+  // used as a fix for mobile browsers changing vh with search bar
+  // 1vh is fallback if calculation fails
+  @return calc(var(--vh, 1vh) * #{$percent});
+}
+
 //
 // ANIMATIONS
 //
