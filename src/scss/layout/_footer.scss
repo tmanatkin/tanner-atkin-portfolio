@@ -1,0 +1,17 @@
+@use "../utils" as *;
+.footer {
+  width: 100%;
+  @include flex-center($direction: row, $justify: space-between);
+  height: 100px;
+  padding: 0 50px;
+
+  p {
+    &:first-child {
+      text-align: left;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

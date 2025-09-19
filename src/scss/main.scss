@@ -5,6 +5,7 @@
 
 // layout
 @use "layout/header";
+@use "layout/footer";
 
 * {
   color: $color-foreground;
@@ -13,28 +14,34 @@
 html,
 body {
   margin: 0;
-  padding: 0;
   @include font-urbanist();
   background-color: $color-background;
+  min-width: $breakpoint-minimum;
 }
 
 header,
-section,
-footer {
+section {
   width: 100%;
   @include flex-center;
+  min-height: 90vh;
 
   .content-container {
     max-width: 1200px;
+    margin: 0 100px;
     @include flex-center($direction: row);
+
+    // mobile
+    @media (max-width: $breakpoint-mobile) {
+      width: 90%;
+      margin: 50px 100px;
+    }
   }
 }
 
-h1 {
-  font-size: 5rem;
-  line-height: 1.125;
-  font-weight: 900;
-  margin: 0;
+p {
+  em {
+    font-weight: 600;
+  }
 }
 
 .bg-gradient {

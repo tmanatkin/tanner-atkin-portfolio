@@ -1,3 +1,5 @@
+@use "sass:string";
+
 //
 // CSS VARIABLES
 //
@@ -40,10 +42,9 @@ $color-gradient-animation-position-end: var(--gradient-animation-position-end);
 // BREAKPOINTS
 //
 
-// $breakpoint-mobile: 600px;
-// $breakpoint-tablet: 900px;
-// $breakpoint-desktop: 1200px;
-// $breakpoint-large-desktop: 1800px;
+$breakpoint-minimum: 320px;
+$breakpoint-mobile: 768px;
+$breakpoint-desktop: 1350px;
 
 //
 // MIXINS
@@ -59,6 +60,16 @@ $color-gradient-animation-position-end: var(--gradient-animation-position-end);
 @mixin font-urbanist() {
   font-family: "Urbanist", sans-serif;
   font-optical-sizing: auto;
+}
+
+//
+// FUNCTIONS
+//
+
+@function clamp-calc($min-width, $max-width, $min-size, $max-size) {
+  @return string.unquote(
+    "clamp(#{$min-size}, calc(#{$min-size} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}) / (#{$max-width} - #{$min-width}))), #{$max-size})"
+  );
 }
 
 //
