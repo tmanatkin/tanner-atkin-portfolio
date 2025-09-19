@@ -7,7 +7,7 @@
     // mobile
     @media (max-width: $breakpoint-mobile) {
       flex-direction: column-reverse;
-      gap: 1rem;
+      gap: 25px;
     }
   }
 
@@ -54,12 +54,12 @@
 
     // tablet, desktop, and up
     @media (min-width: $breakpoint-mobile) {
-      padding: 50px 0;
+      padding: 75px 0;
     }
 
     // mobile
     @media (max-width: $breakpoint-mobile) {
-      width: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 200px, 300px);
+      width: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 250px, 350px);
     }
 
     img {
