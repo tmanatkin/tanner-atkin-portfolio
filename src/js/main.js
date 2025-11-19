@@ -90,10 +90,10 @@ function onLoadGitHubLastUpdated() {
       const lastCommitDate = new Date(data[0].commit.author.date);
       const formattedDate = new Intl.DateTimeFormat("en-US", {
         year: "numeric",
-        month: "long"
+        month: "short",
       }).format(lastCommitDate);
 
-      footerGitHubLastUpdated.textContent = `Updated ${formattedDate}`;
+      footerGitHubLastUpdated.innerHTML = `Updated <span class="mobile-br"><br /></span>${formattedDate}`;
     });
 }
 

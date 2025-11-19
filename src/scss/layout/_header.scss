@@ -2,69 +2,27 @@
 
 .header {
   .content-container {
-    gap: 50px;
-
-    // mobile
-    @media (max-width: $breakpoint-mobile) {
-      flex-direction: column-reverse;
-      gap: 25px;
-    }
+    gap: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 20px, 50px);
+    @include flex-center();
   }
 
-  &-title {
-    @include flex-center($align: stretch);
-    gap: 10px;
-
-    h1 {
-      width: min-content;
-      font-size: 5rem;
-      font-size: clamp-calc($breakpoint-mobile, $breakpoint-desktop, 3rem, 5rem);
-      line-height: 1.125;
-      font-weight: 900;
-      margin: 0;
-      white-space: nowrap;
-
-      // mobile
-      @media (max-width: $breakpoint-mobile) {
-        text-align: center;
-        font-size: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 2.5rem, 4rem);
-      }
-    }
-
-    .header-subtitle {
-      padding: 0 0.2em; // relative to this element font size
-      font-size: 1.75rem;
-      font-size: clamp-calc($breakpoint-mobile, $breakpoint-desktop, 1.125rem, 1.875rem);
-
-      // mobile
-      @media (max-width: $breakpoint-mobile) {
-        padding: none;
-        width: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 261px, 418px);
-      }
-    }
-
-    // mobile
-    @media (max-width: $breakpoint-mobile) {
-      align-items: center;
-    }
+  &-svg-title {
+    mask: url("/images/title.svg") no-repeat center / contain;
+    -webkit-mask: url("/images/title.svg") no-repeat center / contain;
+    width: 100%;
+    height: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 130px, 310px);
   }
 
-  &-image {
-    @include flex-center;
+  &-subtitle {
+    font-size: 1.75rem;
+    width: 100%;
+    text-align: center;
+    // font-size: clamp-calc($breakpoint-mobile, $breakpoint-desktop, 1.125rem, 1.875rem);
 
-    // tablet, desktop, and up
-    @media (min-width: $breakpoint-mobile) {
-      padding: 75px 0;
-    }
-
-    // mobile
-    @media (max-width: $breakpoint-mobile) {
-      width: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 250px, 350px);
-    }
-
-    img {
-      width: 100%;
-      border-radius: 100%;
-    }
+    // // mobile
+    // @media (max-width: $breakpoint-mobile) {
+    //   // padding: none;
+    //   width: clamp-calc($breakpoint-minimum, $breakpoint-mobile, 261px, 418px);
+    // }
   }
 }
