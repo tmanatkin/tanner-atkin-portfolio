@@ -104,6 +104,10 @@ function onLoadGitHubLastUpdated() {
 //
 
 function onLoadSetMobileVh() {
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  console.log(navigator.userAgent);
+  if (!isMobile) return;
+
   const vh = window.innerHeight * 0.01; // convert from total vh to 1 vh
   document.documentElement.style.setProperty("--vh", `${vh}px`);
 }
